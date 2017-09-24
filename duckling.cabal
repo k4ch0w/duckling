@@ -246,6 +246,12 @@ library
                      , Duckling.Email.Rules
                      , Duckling.Email.Types
 
+                     -- Ip
+                     , Duckling.Ip.Corpus
+                     , Duckling.Ip.Rules
+                     , Duckling.Ip.Types
+
+
                      -- Numeral
                      , Duckling.Numeral.AR.Corpus
                      , Duckling.Numeral.AR.Rules
@@ -758,6 +764,30 @@ executable duckling-regen-exe
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings
 
+executable duckling-example-fileread
+  main-is:             ExampleFileMain.hs
+  hs-source-dirs:      exe
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  other-modules:       Duckling.Data.TimeZone
+  build-depends:       duckling
+                     , base
+                     , aeson
+                     , bytestring
+                     , directory             >= 1.2.2.0 && < 1.4
+                     , extra
+                     , filepath              >= 1.4.0.0 && < 1.5
+                     , snap-core             >= 1.0.2.0 && < 1.1
+                     , snap-server           >= 1.0.1.1 && < 1.1
+                     , text
+                     , text-show
+                     , time
+                     , timezone-olson        >= 0.1.7 && < 0.2
+                     , timezone-series
+                     , unordered-containers
+  default-language:    Haskell2010
+  default-extensions:  OverloadedStrings
+
+
 executable duckling-example-exe
   main-is:             ExampleMain.hs
   hs-source-dirs:      exe
@@ -800,24 +830,6 @@ executable duckling-request-sample
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings
 
-executable duckling-expensive
-  main-is:             DucklingExpensive.hs
-  hs-source-dirs:      exe
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  other-modules:       Duckling.Data.TimeZone
-  build-depends:       duckling
-                     , base
-                     , dependent-sum
-                     , directory             >= 1.2.2.0 && < 1.4
-                     , extra
-                     , filepath              >= 1.4.0.0 && < 1.5
-                     , text
-                     , time
-                     , timezone-olson        >= 0.1.7 && < 0.2
-                     , timezone-series
-                     , unordered-containers
-  default-language:    Haskell2010
-  default-extensions:  OverloadedStrings
 
 source-repository head
   type:     git

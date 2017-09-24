@@ -32,6 +32,7 @@ rules (This Distance) = Distance.rules
 rules (This Duration) = Duration.rules
 rules (This Numeral) = Numeral.rules
 rules (This Email) = Email.rules
+rules (This Ip) = []
 rules (This AmountOfMoney) = AmountOfMoney.rules
 rules (This Ordinal) = Ordinal.rules
 rules (This PhoneNumber) = []
