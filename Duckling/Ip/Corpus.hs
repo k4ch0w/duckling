@@ -44,4 +44,7 @@ allExamples = concat
   , examples (IpData "255.255.255.255")
              [ "255.255.255.255"
              ]
+  , examples (IpData "1762:0:0:0:0:B03:1:AF18")
+             [ "1762:0:0:0:0:B03:1:AF18"
+             ]
   ]
