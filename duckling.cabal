@@ -247,6 +247,11 @@ library
                      , Duckling.Email.Types
 
                      -- Ip
+                     , Duckling.Hash.Corpus
+                     , Duckling.Hash.Rules
+                     , Duckling.Hash.Types
+
+                     -- Ip
                      , Duckling.Ip.Corpus
                      , Duckling.Ip.Rules
                      , Duckling.Ip.Types

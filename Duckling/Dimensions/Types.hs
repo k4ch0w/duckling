@@ -39,6 +39,7 @@ import Duckling.AmountOfMoney.Types (AmountOfMoneyData)
 import Duckling.Distance.Types (DistanceData)
 import Duckling.Duration.Types (DurationData)
 import Duckling.Email.Types (EmailData)
+import Duckling.Hash.Types (HashData)
 import Duckling.Ip.Types (IpData)
 import Duckling.Numeral.Types (NumeralData)
 import Duckling.Ordinal.Types (OrdinalData)
@@ -63,6 +64,7 @@ data Dimension a where
   Distance :: Dimension DistanceData
   Duration :: Dimension DurationData
   Email :: Dimension EmailData
+  Hash :: Dimension HashData
   Ip :: Dimension IpData
   Numeral :: Dimension NumeralData
   Ordinal :: Dimension OrdinalData
@@ -80,6 +82,7 @@ instance Show (Dimension a) where
   show Distance = "Distance"
   show Duration = "Duration"
   show Email = "Email"
+  show Hash = "Hash"
   show Ip = "Ip"
   show AmountOfMoney = "AmountOfMoney"
   show Numeral = "Numeral"
@@ -107,17 +110,18 @@ instance Hashable (Dimension a) where
   hashWithSalt s Distance      = hashWithSalt s (1::Int)
   hashWithSalt s Duration      = hashWithSalt s (2::Int)
   hashWithSalt s Email         = hashWithSalt s (3::Int)
-  hashWithSalt s Ip            = hashWithSalt s (4::Int)
-  hashWithSalt s AmountOfMoney = hashWithSalt s (5::Int)
-  hashWithSalt s Numeral       = hashWithSalt s (6::Int)
-  hashWithSalt s Ordinal       = hashWithSalt s (7::Int)
-  hashWithSalt s PhoneNumber   = hashWithSalt s (8::Int)
-  hashWithSalt s Quantity      = hashWithSalt s (9::Int)
-  hashWithSalt s Temperature   = hashWithSalt s (10::Int)
-  hashWithSalt s Time          = hashWithSalt s (11::Int)
-  hashWithSalt s TimeGrain     = hashWithSalt s (12::Int)
-  hashWithSalt s Url           = hashWithSalt s (13::Int)
-  hashWithSalt s Volume        = hashWithSalt s (14::Int)
+  hashWithSalt s Hash          = hashWithSalt s (4::Int)
+  hashWithSalt s Ip            = hashWithSalt s (5::Int)
+  hashWithSalt s AmountOfMoney = hashWithSalt s (6::Int)
+  hashWithSalt s Numeral       = hashWithSalt s (7::Int)
+  hashWithSalt s Ordinal       = hashWithSalt s (8::Int)
+  hashWithSalt s PhoneNumber   = hashWithSalt s (9::Int)
+  hashWithSalt s Quantity      = hashWithSalt s (10::Int)
+  hashWithSalt s Temperature   = hashWithSalt s (11::Int)
+  hashWithSalt s Time          = hashWithSalt s (12::Int)
+  hashWithSalt s TimeGrain     = hashWithSalt s (13::Int)
+  hashWithSalt s Url           = hashWithSalt s (14::Int)
+  hashWithSalt s Volume        = hashWithSalt s (15::Int)
 
 
 toName :: Dimension a -> Text
@@ -125,7 +129,8 @@ toName RegexMatch = "regex"
 toName Distance = "distance"
 toName Duration = "duration"
 toName Email = "email"
-toName Ip = "Ip"
+toName Hash = "hash"
+toName Ip = "ip"
 toName AmountOfMoney = "amount-of-money"
 toName Numeral = "number"
 toName Ordinal = "ordinal"
@@ -145,6 +150,7 @@ fromName name = HashMap.lookup name m
       , ("distance", This Distance)
       , ("duration", This Duration)
       , ("email", This Email)
+      , ("hash", This Hash)
       , ("ip", This Ip)
       , ("number", This Numeral)
       , ("ordinal", This Ordinal)
@@ -165,6 +171,8 @@ instance GEq Dimension where
   geq Duration _ = Nothing
   geq Email Email = Just Refl
   geq Email _ = Nothing
+  geq Hash Hash = Just Refl
+  geq Hash _ = Nothing
   geq Ip Ip = Just Refl
   geq Ip _ = Nothing
   geq AmountOfMoney AmountOfMoney = Just Refl

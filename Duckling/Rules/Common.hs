@@ -17,6 +17,7 @@ import Duckling.Dimensions.Types
 import qualified Duckling.Distance.Rules as Distance
 import qualified Duckling.Duration.Rules as Duration
 import qualified Duckling.Email.Rules as Email
+import qualified Duckling.Hash.Rules as Hash
 import qualified Duckling.Ip.Rules as Ip
 import qualified Duckling.AmountOfMoney.Rules as AmountOfMoney
 import qualified Duckling.PhoneNumber.Rules as PhoneNumber
@@ -30,6 +31,7 @@ rules (This Distance) = Distance.rules
 rules (This Duration) = Duration.rules
 rules (This Numeral) = []
 rules (This Email) = Email.rules
+rules (This Hash) = Hash.rules
 rules (This Ip) = Ip.rules
 rules (This AmountOfMoney) = AmountOfMoney.rules
 rules (This Ordinal) = []
